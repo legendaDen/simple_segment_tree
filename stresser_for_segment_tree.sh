@@ -1,7 +1,7 @@
 #!/bin/bash
 
 g++ generate_test_segment_tree.cpp -o generate_test_segment_tree
-g++ segment_tree_test.cpp -o segment_tree_test
+g++ segment_tree_test.cpp segment_tree.cpp -o segment_tree_test
 g++ naive_segment_tree.cpp -o naive_segment_tree
 
 
@@ -15,14 +15,14 @@ while true; do
     read res1 < segment_tree_test_result.txt
     read res2 < naive_segment_tree_result.txt
 
-    current_iter++
+    current_iter=$((current_iter + 1))
 
     if [ "$res1" != "$res2" ]; then
         echo "Segment tree gives incorrect answers. You can find problem test inside segment_tree_test_stresser.txt"
         exit 1
     fi
 
-    if [ "$current_iter" == "$60" ]; then
+    if [ "$current_iter" == "$69" ]; then
         echo "Segment tree gives fully correct answers."
         exit 1
     fi
