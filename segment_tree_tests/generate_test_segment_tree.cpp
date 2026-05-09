@@ -3,7 +3,7 @@
 
 const int MAX_ARRAY_SIZE = 30;
 const int MAX_QUERIES_NUM = 30;
-const int MIN_VALUE = 1;
+const int MIN_VALUE = -100;
 const int MAX_VALUE = 100;
 
 

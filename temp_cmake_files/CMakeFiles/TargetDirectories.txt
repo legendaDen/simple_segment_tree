@@ -1,3 +1,0 @@
-/home/fft-enjoyer/my_projects_in_github/simple_segment_tree/temp_cmake_files/CMakeFiles/segment_tree_test.dir
-/home/fft-enjoyer/my_projects_in_github/simple_segment_tree/temp_cmake_files/CMakeFiles/edit_cache.dir
-/home/fft-enjoyer/my_projects_in_github/simple_segment_tree/temp_cmake_files/CMakeFiles/rebuild_cache.dir
