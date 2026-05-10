@@ -1,9 +1,26 @@
 #!/bin/bash
 
 g++ generate_test_segment_tree.cpp -o generate_test_segment_tree
-g++ segment_tree_test.cpp segment_tree.cpp -o segment_tree_test
+g++ segment_tree_test.cpp ../segment_tree_lib/segment_tree.cpp -o segment_tree_test
 g++ naive_segment_tree.cpp -o naive_segment_tree
 
+
+# unit tests
+
+./segment_tree_test < unit_tests/test1_input.txt > segment_tree_test_result.txt
+
+read res1_unit < segment_tree_test_result.txt
+read res2_unit < unit_tests/test1_answer.txt
+
+if [ "$res1" != "$res2" ]; then
+    echo "Segment tree gives incorrect answers. You can find problem test inside unit_tests/test1_answer.txt"
+    exit 1
+fi
+
+echo "Unit tests passed!"
+
+
+# stress tests
 
 current_iter=0
 
@@ -23,7 +40,7 @@ while true; do
     fi
 
     if [ "$current_iter" == "$69" ]; then
-        echo "Segment tree gives fully correct answers."
+        echo "Stress tests passed!"
         exit 1
     fi
 
