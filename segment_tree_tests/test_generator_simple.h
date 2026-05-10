@@ -2,11 +2,9 @@
 #include <random>
 #include <cassert>
 
-using namespace std;
 
-
-random_device rd;
-mt19937 simple_generator(rd());
+std::random_device rd;
+std::mt19937 simple_generator(rd());
 
 
 template <typename T>
@@ -15,8 +13,8 @@ T gen_random_value_seg(T l, T r) {
 }
 
 template <typename T>
-vector<T> generate_array(size_t len, T min_value, T max_value) {
-    vector <T> result(len);
+std::vector<T> generate_array(size_t len, T min_value, T max_value) {
+    std::vector <T> result(len);
     for (size_t i = 0; i < len; ++i) {
         result[i] = gen_random_value_seg(min_value, max_value);
     }

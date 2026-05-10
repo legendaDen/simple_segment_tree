@@ -9,23 +9,23 @@ const int MAX_VALUE = 100;
 
 void run_case() {
     int n = gen_random_value_seg(1, MAX_ARRAY_SIZE);
-    vector <int> values = generate_array(n, MIN_VALUE, MAX_VALUE);
+    std::vector <int> values = generate_array(n, MIN_VALUE, MAX_VALUE);
     int q = gen_random_value_seg(1, MAX_QUERIES_NUM);
-    cout << n << endl;
-    for (auto value : values) cout << value << ' ';
-    cout << endl;
-    cout << q << endl;
+    std::cout << n << std::endl;
+    for (auto value : values) std::cout << value << ' ';
+    std::cout << std::endl;
+    std::cout << q << std::endl;
     for (int i = 0; i < q; ++i) {
-        int t = gen_random_value_seg(1, 2);
-        cout << t << ' ';
-        if (t == 1) {
+        int type = gen_random_value_seg(1, 2);
+        std::cout << type << ' ';
+        if (type == 1) {
             int pos = gen_random_value_seg(1, n);
             int new_value = gen_random_value_seg(MIN_VALUE, MAX_VALUE);
-            cout << pos << ' ' << new_value << endl;
-        } else if (t == 2) {
+            std::cout << pos << ' ' << new_value << std::endl;
+        } else if (type == 2) {
             int l = gen_random_value_seg(1, n);
             int r = gen_random_value_seg(l, n);
-            cout << l << ' ' << r << endl;
+            std::cout << l << ' ' << r << std::endl;
         } else {
             assert(false);
         }
@@ -34,8 +34,8 @@ void run_case() {
 
 int main() {
     int test = 1;
-    cout << test << endl;
-    cout << endl;
+    std::cout << test << std::endl;
+    std::cout << std::endl;
     while (test--) run_case();
 
     return 0;

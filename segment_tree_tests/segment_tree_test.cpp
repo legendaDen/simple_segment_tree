@@ -2,39 +2,37 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
-
 
 void run_case() {
     int n;
-    cin >> n;
-    vector <int> values(n);
+    std::cin >> n;
+    std::vector <int> values(n);
     for (auto& value : values) {
-        cin >> value;
+        std::cin >> value;
     }
     segment_tree tree(values);
     int q;
-    cin >> q;
+    std::cin >> q;
     while (q--) {
         int type;
-        cin >> type;
+        std::cin >> type;
         if (type == 1) {
             int pos, new_value;
-            cin >> pos >> new_value;
+            std::cin >> pos >> new_value;
             --pos;
             tree.point_update(pos, new_value);
         } else if (type == 2) {
             int l, r;
-            cin >> l >> r;
+            std::cin >> l >> r;
             --l; --r;
-            cout << tree.range_sum(l, r) << endl;
+            std::cout << tree.range_sum(l, r) << std::endl;
         }
     }
 }
 
 int main() {
     int test = 1;
-    cin >> test;
+    std::cin >> test;
     while (test--) run_case();
 
     return 0;
