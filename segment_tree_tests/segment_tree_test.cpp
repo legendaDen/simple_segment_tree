@@ -1,4 +1,4 @@
-#include "segment_tree.h"
+#include "../segment_tree_lib/segment_tree.h"
 #include <iostream>
 #include <vector>
 
