@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
 using ll = long long;
 
 
@@ -26,7 +25,7 @@ private:
     int segment_tree_size;
     int root_tree;
     seg_info neutral_element;
-    vector <seg_info> tree;
+    std::vector <seg_info> tree;
 
     int get_left_child(int);
 
@@ -36,7 +35,7 @@ private:
 
     void initialize_tree(int);
 
-    void build_tree(const vector<int>&, int, int, int);
+    void build_tree(const std::vector<int>&, int, int, int);
 
     void point_update(int, int, int, int, int);
 
@@ -51,7 +50,7 @@ public:
 
     segment_tree(int);
 
-    segment_tree(const vector<int>&);
+    segment_tree(const std::vector<int>&);
 
 
 };

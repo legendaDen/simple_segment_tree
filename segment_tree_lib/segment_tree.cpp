@@ -1,7 +1,6 @@
 #include "segment_tree.h"
 #include <iostream>
 
-using namespace std;
 using ll = long long;
 
 
@@ -34,7 +33,7 @@ void segment_tree::initialize_tree(int array_size) {
     tree.assign(2 * segment_tree_size - 1, neutral_element);
 }
 
-void segment_tree::build_tree(const vector<int>& values, int node, int curr_l, int curr_r) {
+void segment_tree::build_tree(const std::vector<int>& values, int node, int curr_l, int curr_r) {
     if (curr_r - curr_l == 1) {
         if (curr_l < (static_cast<int>(values.size()))) {
             tree[node].sum_on_seg = values[curr_l];
@@ -81,7 +80,7 @@ segment_tree::segment_tree(int array_size) {
     initialize_tree(array_size);
 }
 
-segment_tree::segment_tree(const vector<int>& values) {
+segment_tree::segment_tree(const std::vector<int>& values) {
     initialize_tree(static_cast<int>(values.size()));
     build_tree(values, root_tree, 0, segment_tree_size);
 }
