@@ -1,8 +1,6 @@
 #!/bin/bash
 
-g++ generate_test_segment_tree.cpp -o generate_test_segment_tree
 g++ segment_tree_test.cpp ../segment_tree_lib/segment_tree.cpp -o segment_tree_test
-g++ naive_segment_tree.cpp -o naive_segment_tree
 
 
 # unit tests
@@ -21,6 +19,9 @@ echo "Unit tests passed!"
 
 
 # stress tests
+
+g++ generate_test_segment_tree.cpp -o generate_test_segment_tree
+g++ naive_segment_tree.cpp -o naive_segment_tree
 
 current_iter=0
 
