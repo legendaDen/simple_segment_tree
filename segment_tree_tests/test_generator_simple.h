@@ -9,13 +9,15 @@ random_device rd;
 mt19937 simple_generator(rd());
 
 
-int gen_random_value_seg(int l, int r) {
+template <typename T>
+T gen_random_value_seg(T l, T r) {
     return (l + ((simple_generator()) % (r - l + 1)));
 }
 
-vector<int> generate_array(int len, int min_value, int max_value) {
-    vector <int> result(len);
-    for (int i = 0; i < len; ++i) {
+template <typename T>
+vector<T> generate_array(size_t len, T min_value, T max_value) {
+    vector <T> result(len);
+    for (size_t i = 0; i < len; ++i) {
         result[i] = gen_random_value_seg(min_value, max_value);
     }
     return result;
