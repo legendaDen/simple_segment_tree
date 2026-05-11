@@ -41,8 +41,6 @@ private:
 
     seg_info range_sum(int, int, int, int, int);
 
-protected:
-
 public:
     void point_update(int, int);
 
