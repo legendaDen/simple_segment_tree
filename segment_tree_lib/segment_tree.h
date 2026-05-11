@@ -4,23 +4,9 @@
 #include <iostream>
 #include <vector>
 
-using ll = long long;
 
-
-class seg_info {
-public:
-
-    ll sum_on_seg;
-
-    seg_info() : sum_on_seg(0) {}
-
-    seg_info(int value) : sum_on_seg(value) {}
-
-
-};
-
-
-class segment_tree : private seg_info {
+template <typename seg_info>
+class segment_tree {
 private:
     int segment_tree_size;
     int root_tree;
@@ -35,20 +21,20 @@ private:
 
     void initialize_tree(int);
 
-    void build_tree(const std::vector<int>&, int, int, int);
+    void build_tree(const std::vector<seg_info>&, int, int, int);
 
-    void point_update(int, int, int, int, int);
+    void point_update(int, seg_info, int, int, int);
 
     seg_info range_sum(int, int, int, int, int);
 
 public:
-    void point_update(int, int);
+    void point_update(int, seg_info);
 
-    ll range_sum(int, int);
+    seg_info range_sum(int, int);
 
     segment_tree(int);
 
-    segment_tree(const std::vector<int>&);
+    segment_tree(const std::vector<seg_info>&);
 
 
 };
