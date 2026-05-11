@@ -33,7 +33,7 @@ template<typename seg_info>
 void segment_tree<seg_info>::build_tree(const std::vector<seg_info>& values, int node, int curr_l, int curr_r) {
     if (curr_r - curr_l == 1) {
         if (curr_l < (static_cast<int>(values.size()))) {
-            tree[node].sum_on_seg = values[curr_l];
+            tree[node] = values[curr_l];
         }
         return;
     }
@@ -46,7 +46,7 @@ void segment_tree<seg_info>::build_tree(const std::vector<seg_info>& values, int
 template<typename seg_info>
 void segment_tree<seg_info>::point_update(int pos, seg_info new_value, int node, int curr_l, int curr_r) {
     if (curr_r - curr_l == 1) {
-        tree[node].sum_on_seg = new_value;
+        tree[node] = new_value;
         return;
     }
     int curr_m = (curr_l + curr_r) / 2;
@@ -74,7 +74,7 @@ void segment_tree<seg_info>::point_update(int pos, seg_info new_value) {
 template<typename seg_info>
 seg_info segment_tree<seg_info>::range_sum(int query_l, int query_r) {
     query_r += 1; // converting to half-interval
-    return segment_tree::range_sum(query_l, query_r, root_tree, 0, segment_tree_size).sum_on_seg;
+    return segment_tree::range_sum(query_l, query_r, root_tree, 0, segment_tree_size);
 }
 
 template<typename seg_info>
@@ -87,3 +87,9 @@ segment_tree<seg_info>::segment_tree(const std::vector<seg_info>& values) {
     initialize_tree(static_cast<int>(values.size()));
     build_tree(values, root_tree, 0, segment_tree_size);
 }
+
+
+template class segment_tree<int>;
+template class segment_tree<long long>;
+template class segment_tree<double>;
+template class segment_tree<long double>;

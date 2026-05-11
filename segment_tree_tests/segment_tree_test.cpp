@@ -10,7 +10,7 @@ void run_case() {
     for (auto& value : values) {
         std::cin >> value;
     }
-    segment_tree tree(values);
+    segment_tree<int> tree(values);
     int q;
     std::cin >> q;
     while (q--) {

@@ -2,11 +2,9 @@
 #include <vector>
 #include <cassert>
 
-using ll = long long;
 
-
-ll range_sum_naive(const std::vector<int>& values, int l, int r) {
-    ll sum = 0;
+int range_sum_naive(const std::vector<int>& values, int l, int r) {
+    int sum = 0;
     for (int i = l; i <= r; ++i) sum += values[i];
     return sum;
 }
