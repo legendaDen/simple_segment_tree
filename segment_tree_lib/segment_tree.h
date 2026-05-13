@@ -5,7 +5,7 @@
 #include <vector>
 
 
-template <typename seg_info>
+template<typename seg_info>
 class segment_tree {
 private:
     int segment_tree_size;
