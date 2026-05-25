@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <concepts>
 
 
 template<typename seg_info>
@@ -22,12 +23,12 @@ private:
 
     void point_update(size_t, seg_info, size_t, size_t, size_t);
 
-    seg_info range_sum(size_t, size_t, size_t, size_t, size_t);
+    seg_info range_query(size_t, size_t, size_t, size_t, size_t);
 
 public:
     void point_update(size_t, seg_info);
 
-    seg_info range_sum(size_t, size_t);
+    seg_info range_query(size_t, size_t);
 
     segment_tree(size_t);
 
@@ -94,11 +95,11 @@ void segment_tree<seg_info>::point_update(size_t pos, seg_info new_value, size_t
 }
 
 template<typename seg_info>
-seg_info segment_tree<seg_info>::range_sum(size_t query_l, size_t query_r, size_t node, size_t curr_l, size_t curr_r) {
+seg_info segment_tree<seg_info>::range_query(size_t query_l, size_t query_r, size_t node, size_t curr_l, size_t curr_r) {
     if (query_l <= curr_l && curr_r <= query_r) return tree[node];
     if (curr_r <= query_l || query_r <= curr_l) return neutral_element;
     size_t curr_m = (curr_l + curr_r) / 2;
-    return (range_sum(query_l, query_r, get_left_child(node), curr_l, curr_m) + range_sum(query_l, query_r, get_right_child(node), curr_m, curr_r));
+    return (range_query(query_l, query_r, get_left_child(node), curr_l, curr_m) + range_query(query_l, query_r, get_right_child(node), curr_m, curr_r));
 }
 
 template<typename seg_info>
@@ -107,9 +108,9 @@ void segment_tree<seg_info>::point_update(size_t pos, seg_info new_value) {
 }
 
 template<typename seg_info>
-seg_info segment_tree<seg_info>::range_sum(size_t query_l, size_t query_r) {
+seg_info segment_tree<seg_info>::range_query(size_t query_l, size_t query_r) {
     query_r += 1; // converting to half-interval
-    return segment_tree::range_sum(query_l, query_r, root_tree, 0, segment_tree_size);
+    return segment_tree::range_query(query_l, query_r, root_tree, 0, segment_tree_size);
 }
 
 template<typename seg_info>
