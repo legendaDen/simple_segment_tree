@@ -27,7 +27,8 @@ void run_case() {
             --pos;
             values[pos] = new_value;
         } else if (type == 2) {
-            int l, r; std::cin >> l >> r;
+            int l, r;
+            std::cin >> l >> r;
             --l; --r;
             std::cout << range_sum_naive(values, l, r) << std::endl;
         } else {
