@@ -24,7 +24,7 @@ void run_case() {
             std::cout << pos << ' ' << new_value << std::endl;
         } else if (type == 2) {
             int l = gen_random_value_seg(1, n);
-            int r = gen_random_value_seg(l, n);
+            int r = gen_random_value_seg(l + 1, n + 1);
             std::cout << l << ' ' << r << std::endl;
         } else {
             assert(false);

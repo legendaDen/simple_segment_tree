@@ -108,7 +108,6 @@ void segment_tree<seg_info>::point_update(size_t pos, seg_info new_value) {
 
 template<typename seg_info>
 seg_info segment_tree<seg_info>::range_query(size_t query_l, size_t query_r) {
-    query_r += 1; // converting to half-interval
     return segment_tree::range_query(query_l, query_r, root_tree, 0, segment_tree_size);
 }
 

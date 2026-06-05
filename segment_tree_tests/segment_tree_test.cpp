@@ -25,7 +25,7 @@ void run_case() {
             int l, r;
             std::cin >> l >> r;
             --l; --r;
-            std::cout << tree.range_sum(l, r) << std::endl;
+            std::cout << tree.range_query(l, r) << std::endl;
         }
     }
 }

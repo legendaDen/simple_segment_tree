@@ -5,7 +5,7 @@
 
 int range_sum_naive(const std::vector<int>& values, int l, int r) {
     int sum = 0;
-    for (int i = l; i <= r; ++i) sum += values[i];
+    for (int i = l; i < r; ++i) sum += values[i];
     return sum;
 }
 
