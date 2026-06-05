@@ -3,14 +3,31 @@
 #include <vector>
 
 
+
+struct SegSum {
+public:
+
+    int sum_on_seg;
+
+    SegSum() : sum_on_seg(0) {}
+
+    SegSum(int sum_) : sum_on_seg(sum_) {}
+
+
+};
+
+SegSum Combine(SegSum a, SegSum b) {
+    return SegSum(a.sum_on_seg + b.sum_on_seg);
+}
+
 void run_case() {
     int n;
     std::cin >> n;
-    std::vector <int> values(n);
+    std::vector <SegSum> values(n);
     for (auto& value : values) {
-        std::cin >> value;
+        std::cin >> value.sum_on_seg;
     }
-    segment_tree<int> tree(values);
+    segment_tree<SegSum> tree(values);
     int q;
     std::cin >> q;
     while (q--) {
@@ -25,7 +42,7 @@ void run_case() {
             int l, r;
             std::cin >> l >> r;
             --l; --r;
-            std::cout << tree.range_query(l, r) << std::endl;
+            std::cout << tree.range_query(l, r).sum_on_seg << std::endl;
         }
     }
 }

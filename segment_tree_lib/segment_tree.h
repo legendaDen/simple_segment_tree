@@ -1,9 +1,16 @@
 #include<iostream>
 #include<vector>
 #include<concepts>
+#include<type_traits>
+
+template<typename T>
+concept Combinable = 
+    requires(const T& a, const T& b) {
+        { Combine(a, b) } -> std::convertible_to<T>;
+    } && std::default_initializable<T>;
 
 
-template<typename seg_info>
+template<Combinable seg_info>
 class segment_tree {
 private:
     size_t segment_tree_size;
@@ -37,22 +44,22 @@ public:
 };
 
 
-template<typename seg_info>
+template<Combinable seg_info>
 size_t segment_tree<seg_info>::get_left_child(size_t node) {
     return (2 * node + 1);
 }
 
-template<typename seg_info>
+template<Combinable seg_info>
 size_t segment_tree<seg_info>::get_right_child(size_t node) {
     return (2 * node + 2);
 }
 
-template<typename seg_info>
+template<Combinable seg_info>
 void segment_tree<seg_info>::update_node_from_childs(size_t node) {
-    tree[node] = tree[get_left_child(node)] + tree[get_right_child(node)];
+    tree[node] = Combine(tree[get_left_child(node)], tree[get_right_child(node)]);
 }
 
-template<typename seg_info>
+template<Combinable seg_info>
 void segment_tree<seg_info>::initialize_tree(size_t array_size) {
     neutral_element = seg_info(0);
     root_tree = 0;
@@ -64,7 +71,7 @@ void segment_tree<seg_info>::initialize_tree(size_t array_size) {
     tree.assign(2 * segment_tree_size - 1, neutral_element);
 }
 
-template<typename seg_info>
+template<Combinable seg_info>
 void segment_tree<seg_info>::build_tree(const std::vector<seg_info>& values, size_t node, size_t curr_l, size_t curr_r) {
     if (curr_r - curr_l == 1) {
         if (curr_l < values.size()) {
@@ -78,7 +85,7 @@ void segment_tree<seg_info>::build_tree(const std::vector<seg_info>& values, siz
     update_node_from_childs(node);
 }
 
-template<typename seg_info>
+template<Combinable seg_info>
 void segment_tree<seg_info>::point_update(size_t pos, seg_info new_value, size_t node, size_t curr_l, size_t curr_r) {
     if (curr_r - curr_l == 1) {
         tree[node] = new_value;
@@ -93,30 +100,30 @@ void segment_tree<seg_info>::point_update(size_t pos, seg_info new_value, size_t
     update_node_from_childs(node);
 }
 
-template<typename seg_info>
+template<Combinable seg_info>
 seg_info segment_tree<seg_info>::range_query(size_t query_l, size_t query_r, size_t node, size_t curr_l, size_t curr_r) {
     if (query_l <= curr_l && curr_r <= query_r) return tree[node];
     if (curr_r <= query_l || query_r <= curr_l) return neutral_element;
     size_t curr_m = (curr_l + curr_r) / 2;
-    return (range_query(query_l, query_r, get_left_child(node), curr_l, curr_m) + range_query(query_l, query_r, get_right_child(node), curr_m, curr_r));
+    return Combine(range_query(query_l, query_r, get_left_child(node), curr_l, curr_m), range_query(query_l, query_r, get_right_child(node), curr_m, curr_r));
 }
 
-template<typename seg_info>
+template<Combinable seg_info>
 void segment_tree<seg_info>::point_update(size_t pos, seg_info new_value) {
     point_update(pos, new_value, root_tree, 0, segment_tree_size);
 }
 
-template<typename seg_info>
+template<Combinable seg_info>
 seg_info segment_tree<seg_info>::range_query(size_t query_l, size_t query_r) {
     return segment_tree::range_query(query_l, query_r, root_tree, 0, segment_tree_size);
 }
 
-template<typename seg_info>
+template<Combinable seg_info>
 segment_tree<seg_info>::segment_tree(size_t array_size) {
     initialize_tree(array_size);
 }
 
-template<typename seg_info>
+template<Combinable seg_info>
 segment_tree<seg_info>::segment_tree(const std::vector<seg_info>& values) {
     initialize_tree(values.size());
     build_tree(values, root_tree, 0, segment_tree_size);
