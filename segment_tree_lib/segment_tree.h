@@ -1,6 +1,6 @@
-#include <iostream>
-#include <vector>
-#include <concepts>
+#include<iostream>
+#include<vector>
+#include<concepts>
 
 
 template<typename seg_info>
@@ -9,7 +9,7 @@ private:
     size_t segment_tree_size;
     size_t root_tree;
     seg_info neutral_element;
-    std::vector <seg_info> tree;
+    std::vector<seg_info> tree;
 
     size_t get_left_child(size_t);
 
@@ -33,7 +33,6 @@ public:
     segment_tree(size_t);
 
     segment_tree(const std::vector<seg_info>&);
-
 
 };
 
