@@ -61,7 +61,7 @@ void segment_tree<seg_info>::update_node_from_childs(size_t node) {
 
 template<Combinable seg_info>
 void segment_tree<seg_info>::initialize_tree(size_t array_size) {
-    neutral_element = seg_info(0);
+    neutral_element = seg_info();
     root_tree = 0;
 
     segment_tree_size = 1;
