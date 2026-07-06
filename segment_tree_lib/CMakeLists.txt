@@ -1,8 +1,5 @@
-add_library(segment_tree_lib STATIC segment_tree.cpp)
+add_library(segment_tree_lib INTERFACE)
 
-target_include_directories(segment_tree_lib PUBLIC .)
+target_include_directories(segment_tree_lib INTERFACE .)
 
-set_target_properties(segment_tree_lib PROPERTIES
-    CXX_STANDARD 17
-    CXX_STANDARD_REQUIRED ON
-)
+target_compile_features(segment_tree_lib INTERFACE cxx_std_20)
