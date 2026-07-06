@@ -4,7 +4,9 @@ struct SegSum {
     int sum_on_seg = 0;
 
     SegSum() = default;
-    explicit SegSum(int sum_) : sum_on_seg(sum_) {}
+    
+    SegSum(int sum_) : sum_on_seg(sum_) {}
+
 };
 
 SegSum Combine(SegSum a, SegSum b) {

@@ -1,7 +1,7 @@
 #include "../segment_tree_lib/segment_tree.h"
 #include "test_utils.h"
-
 #include <gtest/gtest.h>
+
 
 TEST(SegmentTreeUnitTest, RepeatedUpdatesToSameElementKeepLastValue) {
     segment_tree<SegSum> tree(ToSegSum({1, 2, 3, 4, 5, 6, 7}));
@@ -33,6 +33,6 @@ TEST(SegmentTreeUnitTest, RangeQuerySumsMultipleElements) {
     segment_tree<SegSum> tree(ToSegSum({1, 2, 3, 4, 5, 6, 7}));
 
     EXPECT_EQ(tree.range_query(0, 7).sum_on_seg, 28);
-    EXPECT_EQ(tree.range_query(1, 4).sum_on_seg, 2 + 3 + 4);
-    EXPECT_EQ(tree.range_query(3, 7).sum_on_seg, 4 + 5 + 6 + 7);
+    EXPECT_EQ(tree.range_query(1, 4).sum_on_seg, 9);
+    EXPECT_EQ(tree.range_query(3, 7).sum_on_seg, 22);
 }

@@ -1,17 +1,17 @@
 #include "../segment_tree_lib/segment_tree.h"
 #include "test_utils.h"
-
 #include <gtest/gtest.h>
-
 #include <random>
 #include <string>
 #include <vector>
+
 
 constexpr int kIterations = 100;
 constexpr int kMaxArraySize = 50;
 constexpr int kMaxQueries = 100;
 constexpr int kMinValue = -100;
 constexpr int kMaxValue = 100;
+
 
 TEST(SegmentTreeStressTest, MatchesNaiveImplementationOnRandomOperations) {
     std::mt19937 rng(12345);
