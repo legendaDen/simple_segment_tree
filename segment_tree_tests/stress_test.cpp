@@ -15,7 +15,7 @@ constexpr int kMaxQueries = 100;
 constexpr int kMinValue = -100;
 constexpr int kMaxValue = 100;
 
-}  // namespace
+}
 
 TEST(SegmentTreeStressTest, MatchesNaiveImplementationOnRandomOperations) {
     std::mt19937 rng(12345);
