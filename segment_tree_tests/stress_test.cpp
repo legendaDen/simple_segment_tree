@@ -7,15 +7,11 @@
 #include <string>
 #include <vector>
 
-namespace {
-
 constexpr int kIterations = 100;
 constexpr int kMaxArraySize = 50;
 constexpr int kMaxQueries = 100;
 constexpr int kMinValue = -100;
 constexpr int kMaxValue = 100;
-
-}
 
 TEST(SegmentTreeStressTest, MatchesNaiveImplementationOnRandomOperations) {
     std::mt19937 rng(12345);
